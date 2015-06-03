@@ -2,7 +2,7 @@
 
 {% block fos_message_content %}
 
-<h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2>
+<h2>New message</h2>
 
 <form action="{{ url('fos_message_thread_new') }}" method="post">
     {{ form_widget(form) }}

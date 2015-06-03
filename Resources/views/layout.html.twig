@@ -2,13 +2,21 @@
 
  {% block content %}
 
-        <h1>{% trans from 'FOSMessageBundle' %}messenger{% endtrans %}</h1>
 
-        <ul>
-            <li><a href="{{ url('fos_message_inbox') }}">{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</a></li>
-            <li><a href="{{ url('fos_message_sent') }}">{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</a></li>
-            <li><a href="{{ url('fos_message_deleted') }}">{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}</a></li>
-        </ul>
+     <div class="row">
+         <div class="col-lg-9">
+             <h2 class="page-header">Messages</h2>
+
+
+                <a href="{{ url('fos_message_inbox') }}">Inbox</a>
+               <a href="{{ url('fos_message_sent') }}">Sent</a>
+                <a href="{{ url('fos_message_deleted') }}">Deleted</a>
+
+
+         </div>
+         <!-- /.col-lg-12 -->
+     </div>
+     <!-- /.row -->
 
         {% block fos_message_content %}{% endblock %}
 
