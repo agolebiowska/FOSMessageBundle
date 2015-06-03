@@ -19,7 +19,7 @@ class MessageController extends ContainerAware
         $threads = $this->getProvider()->getInboxThreads();
 
         return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:inbox.html.twig', array(
-            'threads' => $threads, 'parent_template' => $this->getUser()->getAccount()->getTemplate()
+            'threads' => $threads, 'parent_template' => $this->container->get('security.token_storage')->getToken()->getUser()->getAccount()->getTemplate()
         ));
     }
 
@@ -33,7 +33,7 @@ class MessageController extends ContainerAware
         $threads = $this->getProvider()->getSentThreads();
 
         return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:sent.html.twig', array(
-            'threads' => $threads, 'parent_template' => $this->getUser()->getAccount()->getTemplate()
+            'threads' => $threads, 'parent_template' => $this->container->get('security.token_storage')->getToken()->getUser()->getAccount()->getTemplate()
         ));
     }
 
@@ -47,7 +47,7 @@ class MessageController extends ContainerAware
         $threads = $this->getProvider()->getDeletedThreads();
 
         return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:deleted.html.twig', array(
-            'threads' => $threads, 'parent_template' => $this->getUser()->getAccount()->getTemplate()
+            'threads' => $threads, 'parent_template' => $this->container->get('security.token_storage')->getToken()->getUser()->getAccount()->getTemplate()
         ));
     }
 
@@ -72,7 +72,7 @@ class MessageController extends ContainerAware
 
         return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:thread.html.twig', array(
             'form' => $form->createView(),
-            'thread' => $thread, 'parent_template' => $this->getUser()->getAccount()->getTemplate()
+            'thread' => $thread, 'parent_template' => $this->container->get('security.token_storage')->getToken()->getUser()->getAccount()->getTemplate()
         ));
     }
 
@@ -95,7 +95,7 @@ class MessageController extends ContainerAware
         return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:newThread.html.twig', array(
             'form' => $form->createView(),
             'data' => $form->getData(),
-            'parent_template' => $this->getUser()->getAccount()->getTemplate()
+            'parent_template' => $this->container->get('security.token_storage')->getToken()->getUser()->getAccount()->getTemplate()
         ));
     }
 
@@ -144,7 +144,7 @@ class MessageController extends ContainerAware
         return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:search.html.twig', array(
             'query' => $query,
             'threads' => $threads,
-            'parent_template' => $this->getUser()->getAccount()->getTemplate()
+            'parent_template' => $this->container->get('security.token_storage')->getToken()->getUser()->getAccount()->getTemplate()
         ));
     }
 
