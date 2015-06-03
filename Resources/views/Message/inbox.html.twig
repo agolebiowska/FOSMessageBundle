@@ -4,7 +4,7 @@
 
 <h2>Inbox</h2>
 
-<a href="{{ url('fos_message_thread_new' )}}">{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</a>
+<a href="{{ url('fos_message_thread_new' )}}">New message</a>
 
 {% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
 
