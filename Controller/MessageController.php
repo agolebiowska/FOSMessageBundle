@@ -19,7 +19,7 @@ class MessageController extends ContainerAware
         $threads = $this->getProvider()->getInboxThreads();
 
         return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:inbox.html.twig', array(
-            'threads' => $threads
+            'threads' => $threads, 'parent_template' => $this->getUser()->getAccount()->getTemplate()
         ));
     }
 
@@ -33,7 +33,7 @@ class MessageController extends ContainerAware
         $threads = $this->getProvider()->getSentThreads();
 
         return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:sent.html.twig', array(
-            'threads' => $threads
+            'threads' => $threads, 'parent_template' => $this->getUser()->getAccount()->getTemplate()
         ));
     }
 
@@ -47,7 +47,7 @@ class MessageController extends ContainerAware
         $threads = $this->getProvider()->getDeletedThreads();
 
         return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:deleted.html.twig', array(
-            'threads' => $threads
+            'threads' => $threads, 'parent_template' => $this->getUser()->getAccount()->getTemplate()
         ));
     }
 
@@ -72,7 +72,7 @@ class MessageController extends ContainerAware
 
         return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:thread.html.twig', array(
             'form' => $form->createView(),
-            'thread' => $thread
+            'thread' => $thread, 'parent_template' => $this->getUser()->getAccount()->getTemplate()
         ));
     }
 
@@ -94,7 +94,8 @@ class MessageController extends ContainerAware
 
         return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:newThread.html.twig', array(
             'form' => $form->createView(),
-            'data' => $form->getData()
+            'data' => $form->getData(),
+            'parent_template' => $this->getUser()->getAccount()->getTemplate()
         ));
     }
 
@@ -142,7 +143,8 @@ class MessageController extends ContainerAware
 
         return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:search.html.twig', array(
             'query' => $query,
-            'threads' => $threads
+            'threads' => $threads,
+            'parent_template' => $this->getUser()->getAccount()->getTemplate()
         ));
     }
 
